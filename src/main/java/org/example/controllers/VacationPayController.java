@@ -1,6 +1,6 @@
 package org.example.controllers;
 
-import org.example.calculators.VacationPayService;
+import org.example.services.VacationPayService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,15 +18,6 @@ public class VacationPayController {
         this.vacationPayService = vacationPayService;
     }
 
-    /**
-     * Эндпоинт, который принимает в качестве аргументов среднюю готовую зарплату и количество отпускных дней
-     * и возвращаяет сумму отпусных, которые придут сотруднику.
-     *
-     * @param salary
-     * @param vacationDays
-     * @return
-     */
-
     @GetMapping(path = "/calculate", params = {"salary", "vacationDays"})
     public ResponseEntity<Double> calculate(
             @RequestParam("salary") double salary,
@@ -34,16 +25,6 @@ public class VacationPayController {
     ) {
         return ResponseEntity.ok(vacationPayService.calculateVacationSalary(salary, vacationDays));
     }
-
-    /**
-     * Эндпоинт, который принимает в качестве аргументов среднюю готовую зарплату, дату начала отпуска
-     * и дату последнего дня отпуска и возвращает сумму откпускных, которые придут сотруднику с учетом праздников.
-     *
-     * @param salary
-     * @param vacationBegin
-     * @param vacationEnd
-     * @return
-     */
     @GetMapping(path = "/calculate", params = {"salary", "vacationBegin", "vacationEnd"})
     public ResponseEntity<Double> calculate(
             @RequestParam("salary") double salary,
