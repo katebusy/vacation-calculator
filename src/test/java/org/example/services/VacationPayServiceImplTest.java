@@ -19,28 +19,18 @@ class VacationPayServiceImplTest {
     void calculateVacationSalaryTwoArgs() {
         double yearSalary = 5000000;
         int vacationDays = 10;
-        String expected = "142207,053";
-
+        double expected = 142207.053;
         double actual = vacationPayService.calculateVacationSalary(yearSalary, vacationDays);
-
-        DecimalFormat df = new DecimalFormat("#.###");
-        String actualFormatted = df.format(actual);
-
-        assertEquals(expected, actualFormatted);
+        assertEquals(expected, actual);
     }
 
     @Test
     void calculateVacationSalaryThreeArgs() {
         double yearSalary = 5000000;
         LocalDate vacationBegin = LocalDate.parse("2024-04-29");
-        LocalDate vacationEnd = LocalDate.parse("2024-05-10"); //10 оплачиваемых дня отпуска
-        String expected = "142207,053";
-
+        LocalDate vacationEnd = LocalDate.parse("2024-05-10");
+        double expected = 142207.053;
         double actual = vacationPayService.calculateVacationSalary(yearSalary, vacationBegin, vacationEnd);
-
-        DecimalFormat df = new DecimalFormat("#.###");
-        String actualFormatted = df.format(actual);
-
-        assertEquals(expected, actualFormatted);
+        assertEquals(expected, actual);
     }
 }

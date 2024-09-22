@@ -11,13 +11,17 @@ public class VacationPayServiceImpl implements VacationPayService {
 
     @Override
     public double calculateVacationSalary(double yearSalary, int vacationDays) {
-        return calculateDaySalary(yearSalary) * vacationDays;
+        double vacationSalary = calculateDaySalary(yearSalary) * vacationDays;
+        double roundedSalary = Math.round(vacationSalary * 1000);
+        return roundedSalary/1000;
     }
 
     @Override
     public double calculateVacationSalary(double yearSalary, LocalDate vacationBegin, LocalDate vacationEnd) {
-        return calculateDaySalary(yearSalary)
+        double vacationSalary = calculateDaySalary(yearSalary)
                 * calculatePayableVacationDays(vacationBegin, vacationEnd);
+        double roundedSalary = Math.round(vacationSalary * 1000);
+        return roundedSalary/ 1000;
     }
     private double calculateDaySalary(double yearSalary) {
         return yearSalary / (MONTH_IN_YEAR * AVERAGE_COUNT_OF_DAYS_IN_MONTH);
