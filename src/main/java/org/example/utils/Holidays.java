@@ -23,6 +23,11 @@ public enum Holidays {
 
     }
 
+    /**
+     * Метод, который возвращает количество праздничных дней за год
+     *
+     * @return
+     */
     public static int countOfAllHolidays() {
         int countOfAllHolidays = 0;
         for (Holidays holiday : Holidays.values()) {
@@ -31,22 +36,47 @@ public enum Holidays {
         return countOfAllHolidays;
     }
 
+    /**
+     * Метод, который возвращает полную дату праздника
+     *
+     * @return
+     */
     public LocalDate getDateOfHoliday() {
         return LocalDate.parse(getYear() + this.getDate());
     }
 
+    /**
+     * Метод, который возвращает количество дней в празднике
+     *
+     * @return
+     */
     public int getCountOfDays() {
         return countOfDays;
     }
 
+    /**
+     * Метод, который возвращает дату праздника без года в формате String
+     *
+     * @return
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     * Метод, который возвращает заданный год
+     *
+     * @return
+     */
     public int getYear() {
         return year;
     }
 
+    /**
+     * Метод, который принимает и задает год
+     *
+     * @param year
+     */
     public void setYear(int year) {
         this.year = year;
     }

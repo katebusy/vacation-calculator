@@ -21,10 +21,24 @@ public class VacationPayServiceImpl implements VacationPayService {
                 * calculatePayableVacationDays(vacationBegin, vacationEnd);
     }
 
+    /**
+     * Метод, который принимает среднюю годовую зарплату и возвращает среднюю дневную зарплату
+     *
+     * @param yearSalary
+     * @return
+     */
     private double calculateDaySalary(double yearSalary) {
         return yearSalary / (MONTH_IN_YEAR * AVERAGE_COUNT_OF_DAYS_IN_MONTH);
     }
 
+    /**
+     * Метод, который принимает дату начала отпуска и дату последнего дня отпуска и возвращает
+     * количество оплачиваемых отпускных дней с учетом праздников
+     *
+     * @param vacationBegin
+     * @param vacationEnd
+     * @return
+     */
     private int calculatePayableVacationDays(LocalDate vacationBegin, LocalDate vacationEnd) {
         int paybleDays = (int) DAYS.between(vacationBegin, vacationEnd.plusDays(1));
         for (LocalDate day = vacationBegin;
